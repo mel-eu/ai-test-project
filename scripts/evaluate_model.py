@@ -5,6 +5,13 @@ from sklearn.metrics import classification_report, confusion_matrix
 from typing import List
 
 
+# Увімкнути інтерактивний бек-енд WSL2
+import matplotlib
+matplotlib.use("TkAgg")  # Можна змінити на "Qt5Agg"
+
+# Увімкнути інтерактивний режим
+plt.ion()
+
 def evaluate_model(model, test_generator) -> List[str]:
     # Оцінка моделі на тестовому наборі
     test_loss, test_acc = model.evaluate(test_generator)
@@ -30,6 +37,7 @@ def evaluate_model(model, test_generator) -> List[str]:
     plt.xlabel('Predicted Label')
     plt.ylabel('True Label')
     plt.title('Confusion Matrix')
-    plt.show()
+    
+    plt.show(block=True)
     
     return class_labels

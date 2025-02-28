@@ -4,10 +4,17 @@ import matplotlib.pyplot as plt
 
 EPOCHS = 20  # Кількість епох
 
+# Увімкнути інтерактивний бек-енд WSL2
+import matplotlib
+matplotlib.use("TkAgg")  # Можна змінити на "Qt5Agg"
+
+# Увімкнути інтерактивний режим
+plt.ion()
+
 # Використання callbacks для запобігання перенавчанню
 early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
-checkpoint = tf.keras.callbacks.ModelCheckpoint("best_model.h5", save_best_only=True, monitor="val_accuracy", mode="max")
+checkpoint = tf.keras.callbacks.ModelCheckpoint("./model/best_model.h5", save_best_only=True, monitor="val_accuracy", mode="max")
 
 
 def train_vgg16(model, train_generator, val_generator) -> None:
@@ -40,4 +47,4 @@ def train_vgg16(model, train_generator, val_generator) -> None:
     plt.legend()
     plt.title('Training & Validation Loss')
 
-    plt.show()
+    plt.show(block=True)
