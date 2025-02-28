@@ -1,0 +1,27 @@
+[project]
+name = "ai"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Dmytro Melnyk", email = "dmytro.melnyk@e-u.edu.ua"},
+]
+dependencies = [
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "torchaudio>=2.1.0",
+    "tensorflow[and-cuda]>=2.18.0",
+    "opencv-python>=4.11.0.86",
+    "matplotlib>=3.10.0",
+    "albumentations>=2.0.4",
+    "sklearn>=0.0.post12",
+    "seaborn>=0.13.2",
+    "scikit-learn>=1.6.1",
+    "en-core-web-sm@https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
+]
+requires-python = "==3.10.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
